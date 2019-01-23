@@ -6,6 +6,7 @@ ENV GO15VENDOREXPERIMENT 1
 RUN apk update && apk add go git build-base && \
   go get -u github.com/googlecloudplatform/gcsfuse && \
   rm -rf /var/cache/apk/*
+
+ADD start.sh /start.sh
  
-ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["elasticsearch"]
+CMD ["/start.sh"]
