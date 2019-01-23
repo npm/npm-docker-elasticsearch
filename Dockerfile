@@ -3,7 +3,7 @@ FROM elasticsearch:2.4-alpine
 ENV GOPATH /go
 ENV GO15VENDOREXPERIMENT 1
 
-RUN apk update && apk add go git build-base && \
+RUN apk update && apk add go git build-base fuse && \
   go get -u github.com/googlecloudplatform/gcsfuse && \
   rm -rf /var/cache/apk/*
 
