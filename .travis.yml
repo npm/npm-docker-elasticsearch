@@ -1,0 +1,20 @@
+sudo: required
+language: node_js
+services:
+- docker
+os:
+- linux
+node_js:
+- '8'
+git:
+  depth: false
+cache:
+  directories:
+  - ".git"
+before_install:
+- openssl aes-256-cbc -k ${GCR_KEY} -in key.json.enc -out key.json -d
+- npm i @npm-wharf/shipwright@latest -g
+- npx makeshift -s @npm -r https://registry.internal.npmjs.com
+- cat key.json | docker login -u=_json_key --password-stdin https://gcr.io/
+script:
+- shipwright build image --registry=gcr.io/npm-image-registry-prod --repo=npmjs --name=elasticsearch-gcs --tags=lm,v_s,v,miv,ma,b,b_v_c_s --build-branches=master,qa,dev,deploy-staging,deploy-npme --cache-from-latest --build-arg build_hash=$TRAVIS_COMMIT --build-arg build_message="$TRAVIS_COMMIT_MESSAGE" --flatten

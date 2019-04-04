@@ -1,0 +1,20 @@
+{
+  "name": "npm-docker-elasticsearch",
+  "version": "1.0.0",
+  "description": "Elasticsearch with GCS Fuse",
+  "main": "Dockerfile",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/npm/npm-docker-elasticsearch.git"
+  },
+  "author": "Todd Kennedy <todd@selfassembled.org>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/npm/npm-docker-elasticsearch/issues"
+  },
+  "homepage": "https://github.com/npm/npm-docker-elasticsearch#readme",
+  "private": true
+}
